@@ -15,6 +15,7 @@ public class RegisterDao {
 	private final String SELECT = "select * from users;";
 	private final String INSERT="insert into users(first_name,last_name,dob,gender,contact_number,category,user_id,password) values(?,?,?,?,?,?,?,?);";
 	private final String LOGIN = "select password from users where user_id = ? ";
+	private final String GET_ROLE = "select category from users where user_id = ?";
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
@@ -33,17 +34,21 @@ public class RegisterDao {
 		return false;
 	}
 	public String checkLogin(RegisterModel user) {
-		String logginStatus;
+		String loginStatus;
 		try {
 			String password = this.jdbcTemplate.queryForObject(LOGIN, String.class, new Object[] { user.getUserId() });
 			if (password.equals(user.getPassword())) {
-				logginStatus="yes";
+				loginStatus = "Logged In";
+				String role = this.jdbcTemplate.queryForObject(GET_ROLE, String.class,
+						new Object[] { user.getUserId() });
+				loginStatus += role;
+				System.out.println(loginStatus);
 			} else {
-				logginStatus="password";
+				loginStatus = "Password";
 			}
 		} catch (Exception e) {
-			logginStatus="userId";
+			loginStatus = "UserId";
 		}
-		return logginStatus;
+		return loginStatus;
 	}
 }

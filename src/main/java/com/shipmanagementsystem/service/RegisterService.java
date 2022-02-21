@@ -14,7 +14,7 @@ public class RegisterService {
 	@Autowired
 	private RegisterDao registerDao;
 
-	public List<RegisterModel> getAllUser() {
+	public List<RegisterModel> getAllUsers() {
 		return registerDao.getAllUsers();
 	}
 
@@ -25,5 +25,6 @@ public class RegisterService {
 	public String checkLogin(RegisterModel user) {
 		return this.registerDao.checkLogin(user);
 	}
+	
 
 }
