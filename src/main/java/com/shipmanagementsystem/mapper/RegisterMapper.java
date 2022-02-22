@@ -12,13 +12,13 @@ public class RegisterMapper implements RowMapper<RegisterModel> {
 	public RegisterModel mapRow(ResultSet resultSet, int i) throws SQLException {
 		
 		RegisterModel register = new RegisterModel();
-		register.setFirstName(resultSet.getString("firstName"));
-		register.setLastName(resultSet.getString("lastName"));
-		register.setDob(new Date(resultSet.getDate("dOB").getTime()));
+		register.setFirstName(resultSet.getString("first_name"));
+		register.setLastName(resultSet.getString("last_name"));
+		register.setDob(new Date(resultSet.getDate("dob").getTime()));
 		register.setGender(resultSet.getString("gender"));
-		register.setContactNumber(resultSet.getString("contactNumber"));
+		register.setContactNumber(resultSet.getString("contact_number"));
 		register.setCategory(resultSet.getString("category"));
-		register.setUserId(resultSet.getString("userId"));
+		register.setUserId(resultSet.getString("user_id"));
 		register.setPassword(resultSet.getString("password"));
 		return register;
 
