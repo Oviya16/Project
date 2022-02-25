@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shipmanagementsystem.model.AllBookingsModel;
+
 import com.shipmanagementsystem.model.BookingModel;
 import com.shipmanagementsystem.model.ShipDetailsModel;
 

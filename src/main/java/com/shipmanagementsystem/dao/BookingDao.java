@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.shipmanagementsystem.mapper.AllBookingsMapper;
-import com.shipmanagementsystem.mapper.BookingMapper;
 import com.shipmanagementsystem.mapper.ShipDetailsMapper;
 import com.shipmanagementsystem.model.AllBookingsModel;
 import com.shipmanagementsystem.model.BookingModel;
