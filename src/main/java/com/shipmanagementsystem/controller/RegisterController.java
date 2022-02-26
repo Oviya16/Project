@@ -10,10 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shipmanagementsystem.model.RegisterModel;
+import com.shipmanagementsystem.model.WalletModel;
 import com.shipmanagementsystem.service.RegisterService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -39,7 +41,7 @@ public class RegisterController {
 	@PostMapping("/login")
 	public ResponseEntity<Object> login(@RequestBody RegisterModel model) {
 		String loginStatus = this.registerService.checkLogin(model);
-		if (loginStatus.equals("Password") || loginStatus.equals("UserId")) {
+		if (loginStatus.equals("Password") || loginStatus.equals("UserId") || loginStatus.equals("Rejected") || loginStatus.equals("Pending")) {
 			Map<String, String> message = new HashMap<String, String>();
 			message.put("category", loginStatus);
 			return new ResponseEntity<Object>(message, HttpStatus.BAD_REQUEST);
@@ -67,5 +69,33 @@ public class RegisterController {
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
 		}
+			
+	}
+	
+	@GetMapping("/Temp")
+	public ResponseEntity<Object> getPendingUsers(){
+		return ResponseEntity.ok(registerService.getPendingUsers());
+	}
+	@PutMapping("/Approve")
+	public ResponseEntity<Object> approveUsers(@RequestBody RegisterModel model){
+		boolean status = this.registerService.approveUsers(model);
+		if (status) {
+			return new ResponseEntity<Object>(HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	@PostMapping("/Reject")
+	public ResponseEntity<Object> rejectUsers(@RequestBody RegisterModel model){
+		try {
+			boolean status = registerService.rejectUsers(model);
+			if (!status) {
+				throw new Exception();
+			}
+			return new ResponseEntity<Object>(model, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+		}
+	
 	}
 }

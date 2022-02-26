@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.shipmanagementsystem.dao.RegisterDao;
 import com.shipmanagementsystem.model.RegisterModel;
+import com.shipmanagementsystem.model.TempModel;
 
 @Service
 public class RegisterService {
@@ -25,6 +26,13 @@ public class RegisterService {
 	public String checkLogin(RegisterModel user) {
 		return this.registerDao.checkLogin(user);
 	}
-	
-
+	public boolean approveUsers(RegisterModel user) {
+		return this.registerDao.approveUsers(user);
+	}
+	public boolean rejectUsers(RegisterModel user) {
+		return this.registerDao.rejectUsers(user);
+		}
+	public List<TempModel> getPendingUsers(){
+		return this.registerDao.getPendingUsers();
+	}
 }
