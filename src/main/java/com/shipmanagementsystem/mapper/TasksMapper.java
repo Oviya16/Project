@@ -7,8 +7,20 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.shipmanagementsystem.model.TasksModel;
 
+
+/**
+ * The Class TasksMapper.
+ */
 public class TasksMapper implements RowMapper<TasksModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param rowNum the row num
+	 * @return the tasks model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public TasksModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 		TasksModel task= new TasksModel();

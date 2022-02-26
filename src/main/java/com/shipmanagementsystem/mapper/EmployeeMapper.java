@@ -7,8 +7,20 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.shipmanagementsystem.model.EmployeeModel;
 
+
+/**
+ * The Class EmployeeMapper.
+ */
 public class EmployeeMapper implements RowMapper<EmployeeModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param i the i
+	 * @return the employee model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public EmployeeModel mapRow(ResultSet rs, int i) throws SQLException {
 		// TODO Auto-generated method stub

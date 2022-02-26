@@ -7,8 +7,20 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.shipmanagementsystem.model.AllBookingsModel;
 
+
+/**
+ * The Class AllBookingsMapper.
+ */
 public class AllBookingsMapper implements RowMapper<AllBookingsModel>{
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param rowNum the row num
+	 * @return the all bookings model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public AllBookingsModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 AllBookingsModel booking= new AllBookingsModel();

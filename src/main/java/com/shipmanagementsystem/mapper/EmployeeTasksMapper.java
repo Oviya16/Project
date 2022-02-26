@@ -8,8 +8,20 @@ import org.springframework.jdbc.core.RowMapper;
 import com.shipmanagementsystem.model.EmployeeTasksModel;
 ;
 
+
+/**
+ * The Class EmployeeTasksMapper.
+ */
 public class EmployeeTasksMapper implements RowMapper<EmployeeTasksModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param rowNum the row num
+	 * @return the employee tasks model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public EmployeeTasksModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 		EmployeeTasksModel task= new EmployeeTasksModel();

@@ -7,8 +7,21 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.shipmanagementsystem.model.FeedbackWithQuestionsModel;
 
+
+
+/**
+ * The Class FeedbackWithQuestionsMapper.
+ */
 public class FeedbackWithQuestionsMapper implements RowMapper<FeedbackWithQuestionsModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param rowNum the row num
+	 * @return the feedback with questions model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public FeedbackWithQuestionsModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 		FeedbackWithQuestionsModel model = new FeedbackWithQuestionsModel();

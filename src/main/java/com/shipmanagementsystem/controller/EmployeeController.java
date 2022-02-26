@@ -10,17 +10,28 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shipmanagementsystem.exceptions.ResourceNotFoundException;
 import com.shipmanagementsystem.model.EmployeeModel;
 import com.shipmanagementsystem.service.EmployeeService;
 
 
+
+/**
+ * The Class EmployeeController.
+ */
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class EmployeeController {
 	
+	/** The employee service. */
 	@Autowired
 	private EmployeeService employeeService;
 	
+	/**
+	 * Gets the all employees.
+	 *
+	 * @return the all employees
+	 */
 	@GetMapping("/employee")
 	public ResponseEntity<Object> getAllEmployees() {
 		return ResponseEntity.ok(employeeService.getAllEmloyees());
@@ -28,26 +39,37 @@ public class EmployeeController {
 
 	
 
+	/**
+	 * Edits the employee.
+	 *
+	 * @param model the model
+	 * @return the response entity
+	 */
 	@PutMapping("/employee")
 	public ResponseEntity<Object> editEmployee(@RequestBody EmployeeModel model){
 		boolean status = this.employeeService.editEmployee(model);
 		if (status) {
 			return new ResponseEntity<Object>(HttpStatus.OK);
 		} else {
-			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
+			throw new ResourceNotFoundException("Failed to edit Employee");
 		}
 	}
+	
+	/**
+	 * Adds the employee.
+	 *
+	 * @param model the model
+	 * @return the response entity
+	 */
 	@PostMapping("/employee")
 	public ResponseEntity<Object> addEmployee(@RequestBody EmployeeModel model) {
-		try {
-			System.out.println(model.getUserId() + model.getLevel() + model.getManager() + model.getSalary());
+		
 			boolean status = employeeService.addEmployee(model);
-			if (!status) {
-				throw new Exception();
+			if (status) {
+				return new ResponseEntity<Object>(model, HttpStatus.CREATED);
 			}
-			return new ResponseEntity<Object>(model, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-		}
+			
+		throw new ResourceNotFoundException("Failed to delete Booking");
+		
 	}
 }

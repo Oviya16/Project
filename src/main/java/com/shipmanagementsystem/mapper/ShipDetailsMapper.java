@@ -8,9 +8,19 @@ import org.springframework.jdbc.core.RowMapper;
 import com.shipmanagementsystem.model.ShipDetailsModel;
 
 
-
+/**
+ * The Class ShipDetailsMapper.
+ */
 public class ShipDetailsMapper  implements RowMapper<ShipDetailsModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param rs the rs
+	 * @param rowNum the row num
+	 * @return the ship details model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public ShipDetailsModel mapRow(ResultSet rs, int rowNum) throws SQLException {
 		ShipDetailsModel ship= new ShipDetailsModel();

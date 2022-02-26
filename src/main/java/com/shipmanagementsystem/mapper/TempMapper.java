@@ -9,8 +9,20 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.shipmanagementsystem.model.TempModel;
 
+
+/**
+ * The Class TempMapper.
+ */
 public class TempMapper implements RowMapper<TempModel> {
 	
+	/**
+	 * Map row.
+	 *
+	 * @param resultSet the result set
+	 * @param i the i
+	 * @return the temp model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public TempModel mapRow(ResultSet resultSet, int i) throws SQLException {
 		

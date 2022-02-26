@@ -9,6 +9,14 @@ import com.shipmanagementsystem.model.FeedbackModel;
 
 public class FeedbackMapper implements RowMapper<FeedbackModel> {
 
+	/**
+	 * Map row.
+	 *
+	 * @param resultSet the result set
+	 * @param i the i
+	 * @return the feedback model
+	 * @throws SQLException the SQL exception
+	 */
 	@Override
 	public FeedbackModel mapRow(ResultSet resultSet, int i) throws SQLException {
 
